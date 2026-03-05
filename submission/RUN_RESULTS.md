@@ -10,45 +10,47 @@
 ## Commands executed
 
 ```bash
-cd automation2
+cd automation
 npm test
 ```
 
 ## Run outcome (captured)
 
-From completed run output:
+From the latest completed run output:
 
 - Total tests: 11
-- Passed: 6
-- Failed: 5
+- Passed: 7
+- Failed: 3
+- Flaky (passed on retry): 1
 
 Failed tests observed:
 
 1. `TC06 - Add to cart updates cart state`
 2. `TC08 - Checkout page loads`
 3. `TC09 - Payment intent related request is emitted`
-4. `TC04 - PDP loads successfully`
-5. `TC05 - Price consistency between PLP and PDP`
+
+Flaky test observed:
+
+- `TC01 - Search returns results` (passed on retry)
 
 ## Key failure patterns
 
-- Product selection intermittently lands on sold-out/unpurchasable PDP candidates.
-- PDP navigation sometimes times out for specific product slugs.
-- Cart/checkout journey instability is higher than discovery/API journeys.
+- Cart/checkout path remains unstable in staging due to dynamic product state and checkout rendering variability.
+- Checkout-page text marker used in assertion can resolve hidden elements in some runs.
 
 ## Flakiness notes
 
-- Automatic retries were triggered in cart-checkout tests.
-- Failures vary by dynamic catalogue state and product availability.
+- Retries were triggered in both discovery and cart-checkout suites.
+- Discovery mostly stabilizes under retry; checkout flow remains the highest-risk area.
 
 ## Artifact locations
 
-- HTML report: `automation2/playwright-report/index.html`
-- Failure traces/screenshots/videos: `automation2/test-results/`
+- HTML report: `automation/playwright-report/index.html`
+- Failure traces/screenshots/videos: `automation/test-results/`
 - Example failing artifact folders:
-  - `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state/`
-  - `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/`
-  - `automation2/test-results/cart-checkout-Cart-and-che-3dcf9--related-request-is-emitted/`
+  - `automation/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state/`
+  - `automation/test-results/cart-checkout-Cart-and-che-165bd--TC08---Checkout-page-loads/`
+  - `automation/test-results/cart-checkout-Cart-and-che-3dcf9--related-request-is-emitted/`
 
 ## Data changes
 

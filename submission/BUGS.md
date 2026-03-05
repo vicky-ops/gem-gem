@@ -18,21 +18,21 @@ Deterministic candidate for cart journey should be purchasable (or clearly exclu
 
 ### Actual
 
-Some deterministic PDP candidates are sold out (`This item is currently sold out`), causing cart flow to fail/stop.
+Some deterministic PDP candidates are sold out (`This item is currently sold out`) or do not produce expected cart update behavior.
 
 ### Evidence
 
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/error-context.md`
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/test-failed-1.png`
+- `automation/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/error-context.md`
+- `automation/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/test-failed-1.png`
 
 ### Impact / recommendation
 
-- Impact: High flakiness in revenue-path automation and potential user friction in discovery-to-cart journey.
-- Recommendation: Expose explicit in-stock indicator/filter in PLP API/UI and make sort/filter deterministic for purchasable inventory.
+- Impact: High flakiness in revenue-path automation and unstable cart coverage.
+- Recommendation: Expose explicit in-stock indicator/filter in PLP API/UI and prioritize purchasable items for deterministic selection.
 
 ---
 
-## 2) PDP Navigation Instability / Timeout for Some Product Slugs
+## 2) Checkout Page Lacks a Stable, Always-Visible Payment Marker
 
 - Severity: High
 - Priority: P0
@@ -40,25 +40,25 @@ Some deterministic PDP candidates are sold out (`This item is currently sold out
 
 ### Steps to reproduce
 
-1. Execute discovery flow and collect product URLs.
-2. Navigate sequentially to each PDP candidate.
-3. Observe timeout on specific slug navigation (example captured in run).
+1. Add a product and navigate to checkout.
+2. Assert a generic payment/checkout text marker.
+3. Repeat across runs.
 
 ### Expected
 
-PDP loads within normal timeout envelope for selectable product URLs.
+Checkout should expose at least one stable, visible marker element suitable for deterministic test assertion.
 
 ### Actual
 
-Navigation timed out (`page.goto` timeout) for at least one PDP URL during cart journey.
+In failing runs, matching text is present but hidden/non-actionable, causing checkout/payment assertions to fail.
 
 ### Evidence
 
-- Run log excerpt: `navigating to .../product/ailene-test-ring-ring ... timeout`
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state/trace.zip`
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state/video.webm`
+- `automation/test-results/cart-checkout-Cart-and-che-165bd--TC08---Checkout-page-loads/error-context.md`
+- `automation/test-results/cart-checkout-Cart-and-che-3dcf9--related-request-is-emitted/error-context.md`
+- `automation/test-results/cart-checkout-Cart-and-che-3dcf9--related-request-is-emitted/trace.zip`
 
 ### Impact / recommendation
 
-- Impact: Blocks checkout path automation and indicates potential backend/edge routing instability.
-- Recommendation: Investigate PDP endpoint latency/error handling for affected slugs and add server-side monitoring with alert thresholds.
+- Impact: Blocks reliable verification of checkout and payment-intent stages.
+- Recommendation: Add stable `data-testid` markers for checkout-ready and payment-section-visible states.

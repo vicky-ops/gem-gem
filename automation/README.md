@@ -1,4 +1,4 @@
-# automation2
+# automation
 
 Playwright automation suite (JavaScript) aligned to the Practical Technical Assessment requirements.
 
@@ -31,7 +31,7 @@ Playwright automation suite (JavaScript) aligned to the Practical Technical Asse
 ## Setup
 
 ```bash
-cd automation2
+cd automation
 npm install
 npx playwright install chromium
 ```

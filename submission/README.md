@@ -4,7 +4,7 @@
 
 Automation implementation is in:
 
-- `automation2/`
+- `automation/`
 
 ## Prerequisites
 
@@ -15,14 +15,14 @@ Automation implementation is in:
 ## Install
 
 ```bash
-cd automation2
+cd automation
 npm install
 npx playwright install chromium
 ```
 
 ## Environment variables
 
-`automation2` uses `.env`.
+`automation` uses `.env`.
 
 1. Copy template:
 
@@ -42,28 +42,28 @@ cp .env.example .env
 ## Run UI + API suite
 
 ```bash
-cd automation2
+cd automation
 npm test
 ```
 
 ## Run only UI tests
 
 ```bash
-cd automation2
+cd automation
 npx playwright test tests/discovery.spec.js tests/cart-checkout.spec.js
 ```
 
 ## Run only API tests
 
 ```bash
-cd automation2
+cd automation
 npx playwright test tests/api.spec.js
 ```
 
 ## Reports and artifacts
 
-- HTML report: `automation2/playwright-report/index.html`
-- Failure artifacts: `automation2/test-results/`
+- HTML report: `automation/playwright-report/index.html`
+- Failure artifacts: `automation/test-results/`
   - screenshots (`test-failed-1.png`)
   - traces (`trace.zip`)
   - videos (`video.webm`)

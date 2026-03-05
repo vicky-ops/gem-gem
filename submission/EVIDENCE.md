@@ -6,10 +6,10 @@ All evidence below comes from Playwright trace/screenshot/video artifacts genera
 
 ### Key artifacts
 
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state/trace.zip`
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/trace.zip`
-- `automation2/test-results/cart-checkout-Cart-and-che-3dcf9--related-request-is-emitted/trace.zip`
-- `automation2/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/error-context.md`
+- `automation/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state/trace.zip`
+- `automation/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/trace.zip`
+- `automation/test-results/cart-checkout-Cart-and-che-3dcf9--related-request-is-emitted/trace.zip`
+- `automation/test-results/cart-checkout-Cart-and-che-674bc--to-cart-updates-cart-state-retry1/error-context.md`
 
 ## UI action -> API mapping (from automated waits + trace)
 
